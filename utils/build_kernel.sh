@@ -1,4 +1,4 @@
-#!/bin/bash
+
 
 tar xf linux-4.12.10.tar.xz
 make localmodconfig

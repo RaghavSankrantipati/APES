@@ -1,4 +1,4 @@
-#!/bin/bash
+
 
 os=$(lsb_release -a)
 kv=$(uname -a)

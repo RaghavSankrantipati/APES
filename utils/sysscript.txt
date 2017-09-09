@@ -1,0 +1,17 @@
+
+
+OS Type and Distribution:
+Distributor ID:	Ubuntu
+Description:	Ubuntu 16.04.3 LTS
+Release:	16.04
+Codename:	xenial
+
+Kernel Version:
+Linux raghav-VirtualBox 4.12.10 #1 SMP Wed Sep 6 14:53:52 MDT 2017 x86_64 x86_64 x86_64 GNU/Linux
+
+Kernel Build:
+Linux version 4.12.10 (raghav@raghav-VirtualBox) (gcc version 5.4.0 20160609 (Ubuntu 5.4.0-6ubuntu1~16.04.4) ) #1 SMP Wed Sep 6 14:53:52 MDT 2017
+
+System Architecture:
+x86_64
+
