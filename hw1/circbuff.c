@@ -25,11 +25,11 @@
 #include "circbuff.h"
 
  
- uint8_t allocate (Struct CircBuff **base, uint8_t size)
+ uint8_t allocate (struct CircBuff **base, uint8_t size)
  {
-	 Struct CircBuff *buff;
+	 struct CircBuff *buff;
 	 buff->base = (uint32_t *)malloc(sizeof(uint32_t)*size);
-	 *base = buff->base;
+	 *base = buff;
 	 buff->head = buff->base;
 	 buff->tail = buff->head;
 	 buff->size = size;
@@ -37,62 +37,61 @@
 	 return 1;
  }
  
-void destroy(Struct CircBuff *buff)
+void destroy(struct CircBuff *buff)
 {
-	free(temp);
+	free(buff);
 }
 
-uint8_t isFull(Struct CircBuff *buff)
+uint8_t isFull(struct CircBuff *buff)
 {
-	if(buff->count == temp->size) return 1;
+	if(buff->count == buff->size) return 1;
 	else return 0;
 }
 
-uint8_t isEmpty(Struct CircBuff *buff)
+uint8_t isEmpty(struct CircBuff *buff)
 {
 	if(buff->count == 0) return 1;
 	else return 0;
 }
 
-uint8_t addItem(Struct CircBuff *buff, uint32_t *data)
+uint8_t addItem(struct CircBuff *buff, uint32_t *data)
 {
 	if(isFull(buff)==1) 
 		return 0;
 	else
 	{
 		if(buff->head==buff->end)
-			buff->head=buff->start;
+			buff->head=buff->base;
 		else
-			buff->head=buff->head + sizeof(uint32_t);  					//move head to the next index
+			buff->head=buff->head + sizeof(uint32_t);  				//move head to the next index
 			
-		memcpy(buff->head, data, uint32_t);								//move data from data pointer to buffer head
+		memcpy(buff->head, data, sizeof(uint32_t));								//move data from data pointer to buffer head
 		buff->count++;
 		
 		return 1;
 	}
 }
 
-uint8_t removeItem(Struct CircBuff *buff, uint32_t *data)
+uint8_t removeItem(struct CircBuff *buff, uint32_t *data)
 {
 	if(isEmpty(buff)==1)
 	{
-		*data=null;
 		return 0;
 	}
 	else 
 	{
 		if(buff->tail == buff->end)
-			buff->tail = buff->start;
+			buff->tail = buff->base;
 		else 
 			buff->tail = buff->tail + sizeof(uint32_t);						//move tail to the next index
 		
-		memcpy(data, buff->tail, uint32_t);									//move data from buffer tail to data pointer
+		memcpy(data, buff->tail, sizeof(uint32_t));									//move data from buffer tail to data pointer
 		buff->count--;
 		return 1;
 	}
 }
 
-void dump(Struct CircBuff *buff)
+void dump(struct CircBuff *buff)
 {
 	uint32_t *temp;
 	temp = buff->head;
@@ -103,7 +102,7 @@ void dump(Struct CircBuff *buff)
 	}
 }
 
-uint8_t size(Struct CircBuff *buff)
+uint8_t size(struct CircBuff *buff)
 {
 	return buff->size;
 }

@@ -23,9 +23,9 @@
 #define CIRCBUFF_H
 #include<stdint.h>
 #include<stdbool.h>
-
+#include<string.h>
  
- Struct CircBuff
+ struct CircBuff
  {
 	 uint32_t *head;
 	 uint32_t *tail;
@@ -35,13 +35,13 @@
 	 uint32_t *end;
  };
  
- uint8_t allocate (Struct CircBuff **base, uint8_t size);
- void destroy(Struct CircBuff *buff);
- uint8_t isFull(Struct CircBuff *buff);
- uint8_t isEmpty(Struct CircBuff *buff);
- uint8_t addItem(Struct CircBuff *buff, uint32_t *data);
- void dump(Struct CircBuff *buff);
- uint8_t size(Struct CircBuff *buff);
+ uint8_t allocate(struct CircBuff **base, uint8_t size);
+ void destroy(struct CircBuff *buff);
+ uint8_t isFull(struct CircBuff *buff);
+ uint8_t isEmpty(struct CircBuff *buff);
+ uint8_t addItem(struct CircBuff *buff, uint32_t *data);
+ void dump(struct CircBuff *buff);
+ uint8_t size(struct CircBuff *buff);
  
  #endif
  

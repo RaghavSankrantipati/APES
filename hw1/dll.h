@@ -24,18 +24,18 @@
 #include<stdint.h>
 #include<stdbool.h>
 
-Struct Node
+struct Node
 {
 	uint8_t index;
 	uint32_t data;
-	Struct Node *prev;
-	Struct Node *next;
+	struct Node *prev;
+	struct Node *next;
 };
 
-uint8_t addNode(Struct Node **head, uint32_t data, uint8_t index);
-uint8_t removeNode(Struct **head, uint32_t *data, uint8_t index);
-uint8_t destroy(Struct Node **head);
-void Search(Struct **head, uint32_t *data, uint8_t *index);
-void size(Struct Node **head, uint8_t *size);
+uint8_t addNode(struct Node **head, uint32_t *data, uint8_t index);
+uint8_t removeNode(struct Node **head, uint32_t *data, uint8_t index);
+uint8_t destroy(struct Node **head);
+void Search(struct Node **head, uint32_t *data, uint8_t *index);
+void size(struct Node **head, uint8_t *size);
 
  #endif

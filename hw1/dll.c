@@ -24,31 +24,32 @@
 #include<stdlib.h>
 #include "dll.h"
 
-uint8_t addNode(Struct Node **head, uint32_t data, uint8_t index)
+uint8_t addNode(struct Node **head, uint32_t *data, uint8_t index)
 {
-	Struct Node *temp;
+	struct Node *temp;
 	temp = *head;
 	while(temp->index!=index)
 	{
 		temp = temp->next;
 	}
-	Struct Node *new = (Struct Node *)malloc(sizeof(Struct Node));  		    //dynamic memory allocation for a node
+	struct Node *new = (struct Node *)malloc(sizeof(struct Node));  		    //dynamic memory allocation for a node
 	new->next = temp->next;														//create a new node and change next and previous 
-	new->data =  *data;															// node address for new node, prev and next node
+	new->data = *data;															// node address for new node, prev and next node
 	new->prev = temp->prev;													
 	temp->next = new;
 	(new->next)->prev = new;
 	temp = new;
-	while(temp->next!=null)
+	while(temp->next!=NULL)
 	{
 		temp=temp->next;
-		tem->index++;
+		temp->index++;
 	}
+	return 0;
 }
 
-uint8_t removeNode(Struct **head, uint32_t *data, uint8_t index)
+uint8_t removeNode(struct Node **head, uint32_t *data, uint8_t index)
 {
-	Struct Node *temp;
+	struct Node *temp;
 	temp = *head;
 	while(temp->index!=index)
 	{
@@ -58,22 +59,22 @@ uint8_t removeNode(Struct **head, uint32_t *data, uint8_t index)
 	(temp->next)->prev = temp->prev;
 	*data = temp->data;
 	
-	Struct Node *temp1;
+	struct Node *temp1;
 	temp1 = temp->next;
 	free(temp);
 	
-	while(temp1->next != null)
+	while(temp1->next != NULL)
 	{
 		temp1->index--;
 		temp=temp->next;
 	}
 }
 
-uint8_t destroy(Struct Node **head)
+uint8_t destroy(struct Node **head)
 {
-	Struct Node *temp1, *temp2;
+	struct Node *temp1, *temp;
 	temp1 = *head;
-	while(temp->next!=null)
+	while(temp->next!=NULL)
 	{
 		temp=temp->next;
 		free(temp->prev);
@@ -83,23 +84,23 @@ uint8_t destroy(Struct Node **head)
 	return 1;
 }
 
-void Search(Struct **head, uint32_t *data, uint8_t *index)
+void Search(struct Node **head, uint32_t *data, uint8_t *index)
 {
-	Struct Node *temp;
+	struct Node *temp;
 	temp = *head;
 	while(temp->data != *data)
 	{
 		temp=temp->next;
 	}
 	
-	index =  temp->index;
+	*index =  temp->index;
 }
 
-void size(Struct Node **head, uint8_t *size)
+void size(struct Node **head, uint8_t *size)
 {
-	Struct Node *temp;
+	struct Node *temp;
 	temp = *head;
-	while(temp->next!=null)
+	while(temp->next!=NULL)
 	{
 		temp = temp->next;
 	}
