@@ -1,0 +1,23 @@
+
+Unit Tests are written using CMOCKA for Doubly Linked list in dll.c
+
+1. Testing addNode function
+  a. Checking whether the List is Empty
+  b. Passing null pointer
+  c. adding node to an empty list
+  d. adding node in index 1 of list
+  e. adding node to the end of list
+  f. adding node in the middle of list
+  g. adding node with index greater than size
+  
+2. Tests for removeNode function
+  a. checking Null pointer of data
+  b. Passing null pointer of dll
+  c. removing at the end of list
+  d. removing at index greater than size
+  e. removing from middle of list
+  f. removing from start of list
+  
+3. Tests for search function
+  a. searching for a data that is present
+  b. searching for a data that is absent
