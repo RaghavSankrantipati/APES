@@ -18,14 +18,14 @@ int main()
 {
 	pid_t child_pid;
 	int status = 0;
-	clock_t start1, end1, total, start2, end2;
+	clock_t start1, end1, total;
 
 	start1 = clock();
 	printf("pid before fork : %d\n", (int)getpid());
 	printf("Creating a new  process using fork\n");
 	/*calling fork*/
 	child_pid = fork();
-	end1 = clock();
+	
 	/*If for fails*/
 	if(child_pid < 0 )
 	{
@@ -43,10 +43,11 @@ int main()
 	
 	else
 	{
-		wait(&status);		
-		printf("After exec\n");
+		wait(&status);	
+		end1 = clock();	
+		printf("After exec...\n");
 		double total = (double)(end1-start1)/CLOCKS_PER_SEC;
-	        printf("Time taken for fork: %fsecs\n", total);
+	        printf("Time taken for fork and exec: %fsecs\n", total);
 
         }
 	return 0;
