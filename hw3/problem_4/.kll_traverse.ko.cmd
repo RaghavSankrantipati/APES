@@ -1,0 +1,1 @@
+cmd_/home/raghav/Desktop/ECEN_5013/hw3/problem_4/kll_traverse.ko := ld -r -m elf_x86_64 -T ./scripts/module-common.lds --build-id  -o /home/raghav/Desktop/ECEN_5013/hw3/problem_4/kll_traverse.ko /home/raghav/Desktop/ECEN_5013/hw3/problem_4/kll_traverse.o /home/raghav/Desktop/ECEN_5013/hw3/problem_4/kll_traverse.mod.o ;  true
