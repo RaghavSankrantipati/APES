@@ -16,8 +16,7 @@
 *@compiler:arm-linux-gnueabihf-gcc
 *@Usage : compile it with any file by including test_driver.h
 *@Usage : example : $gcc server.c test_driver.c -o server
-	
-*@Reference: http://www.cs.rpi.edu/~moorthy/Courses/os98/Pgms/socket.html
+
  **********************************************************************/
 
 /** @brief This writes a user_struct to led driver 
