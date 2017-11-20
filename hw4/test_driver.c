@@ -5,24 +5,7 @@
 #include<string.h>
 #include<unistd.h>
 
-#define LED_OFF 0
-#define LED_ON 1
-
-typedef enum {
-	write_period,
-	write_duty_cycle,
-	write_state,
-	read_period,
-	read_duty_cycle,
-	read_state
-}state_variable_t;
-
-struct user_struct{
-	state_variable_t state_variable;
-	int value;
-};
-
-int fd, ret;
+#include "test_driver.h"
 
 int write_LEDdriver(state_variable_t var, int val){
 	struct user_struct *us;
@@ -50,13 +33,13 @@ int read_LEDdriver(state_variable_t var){
 	}
 
 	if( var == read_period ){
-		printf("User LED 3, Period = %d \n", us->value);
+		printf("User LED 3: Period = %d \n", us->value);
 	} else if (var == read_duty_cycle){
-		printf("User LED 3, duty cycle = %d \n", us->value);
+		printf("User LED 3: duty cycle = %d \n", us->value);
 	} else if(var == read_state){
-		printf("User LED 3, state = %d \n", us->value);
+		printf("User LED 3: state = %d \n", us->value);
 	}
-	return 1;
+	return us->value;
 }
 
 int read_all(void){
@@ -65,16 +48,3 @@ int read_all(void){
 	read_LEDdriver(read_state);
 }
 
-int main(){
-	int ret;
-	fd = open("/dev/led_dev", O_RDWR);
-	if (fd < 0){
-		perror("Failed to open the device...");
-	    return errno;
-	}
-
-	write_LEDdriver(write_period, 3);
-	write_LEDdriver(write_duty_cycle, 30);
-	write_LEDdriver(write_state, LED_OFF);
-	read_all();
-}
