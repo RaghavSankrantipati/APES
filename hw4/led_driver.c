@@ -95,6 +95,7 @@ static ssize_t led_write(struct file *filep, const char __user * buffer, size_t 
 	} else if(ud->state_variable == write_state){
 		state = ud->value;
 		printk(KERN_INFO "LED DRIVER: Updating LED state");
+		gpio_set_value(LED3, state);
 	}
 
 	kfree(ud);
